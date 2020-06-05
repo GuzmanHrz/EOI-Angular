@@ -6,6 +6,7 @@
 
 
 function ejercicio01(email){
+    email.trim();
     if (email == "yunior.developer@hotmail.com" || email == "miguel@mrbug.es" || email =="imanol@mercadona.com"){
         return true;
     } else {
@@ -26,9 +27,19 @@ function ejercicio01(email){
 
 
 function ejercicio02(email){
-    console.log(email.count('m'));
+    var matchesOfM = email.match(/m/gi);
+    var mResult;
 
-    return `El correo ${email} tiene ${email.length} caracteres y en mayúsculas se quedaría así ${email.toUpperCase()} .Además contiene [ninguna/2] letras M`
+    if (matchesOfM !== null ){
+        mResult = `Además contiene ${matchesOfM.length} letras M`;
+
+    } else {
+
+        mResult = "Además no contiene ninguna letra M"
+
+    }
+    
+    return `El correo ${email} tiene ${email.length} caracteres y en mayúsculas se quedaría así ${email.toUpperCase()}. ${mResult}`
 }
 
 
@@ -43,7 +54,23 @@ function ejercicio02(email){
 
 
 function ejercicio03(email){
-    console.log(email);
+
+    let startDomain = email.indexOf('@');
+
+    if (startDomain !== -1 ){
+        let domain = email.substring( startDomain + 1);
+        let emailLength = email.length - domain.length - 1;
+        let matchesOfNumbers = email.match(/[0-9]/g);
+        let numbersStament; 
+        if (matchesOfNumbers !== null){
+            numbersStament = `Además, el correo contiene ${matchesOfNumbers.length} números`
+        } else {
+            numbersStament = "Además, el correo no contiene ningún número"
+        }
+        return `El correo ${email} pertenece al dominio ${domain} y tiene ${emailLength} caracteres sin contar el dominio ni el @. ${numbersStament}`;
+    } 
+    return "No se trata de un correo electronico";
+
 }
 
 
@@ -58,7 +85,16 @@ function ejercicio03(email){
 
 
 function ejercicio04(user){
-    console.log(user);
+    var emailCreationMessage = "";
+    var over18 = "";
+    console.log(Number(user.edad))
+    if (Number(user.edad) >= 18) {
+        emailCreationMessage = `Por lo tanto, le he creado un usuario con el correo ${user.correo}`;
+    } else {
+        over18 = "no ";
+    }
+
+    return `El usuario ${user.nombre} ${over18}es mayor de edad ${emailCreationMessage}`;
 }
 
 
@@ -73,7 +109,7 @@ function ejercicio04(user){
 
 
 function ejercicio05(user){
-    console.log(user);
+   
 }
 
 
