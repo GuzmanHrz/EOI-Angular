@@ -109,8 +109,23 @@ function ejercicio04(user){
 
 
 function ejercicio05(user){
-   
+    const  yunior = { nombre: "Yunior",  correo: "yunior.developer@hotmail.com", edad: "26" };
+    var    commonProperties = 0;
+    var    commonPropertiesString = "La persona introducida pudiera ser Yunior. Ya que tiene";
+    for (const property in user ){
+        if (yunior[property] === user[property]) {
+            ++commonProperties;
+            commonPropertiesString = `${commonPropertiesString} ${ property == "edad" ? " la misma " : " el mismo "} ${property} ${ commonProperties < 2  ? "y" : "." }` ;
+        }
+    }
+    if (3 > commonProperties > 0){
+        return commonPropertiesString;
+    }
+    return `La persona introducida ${commonProperties === 0 ? " no " : "" } es  Yunior`;
 }
+    
+    
+
 
 
 
